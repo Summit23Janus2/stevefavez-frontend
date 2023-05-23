@@ -1,0 +1,49 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: stevefavez-stevefavez-poi-map-app-dev
+  annotations:
+    argocd/app-name: stevefavez-stevefavez-poi-map-app-dev
+    backstage.io/kubernetes-id: stevefavez-stevefavez-poi-map-app-dev
+    backstage.io/kubernetes-namespace: stevefavez
+    backstage.io/kubernetes-label-selector: 'app.kubernetes.io/instance=stevefavez-stevefavez-poi-map-app-dev'
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: Summit23Janus2/stevefavez-frontend
+    janus-idp.io/tekton-enabled: 'true'
+  tags:
+    - typescript
+    - angular
+    - workshop
+  links:
+    - url: https://console-openshift-consoleapps.summit23blues.6mbu.p1.openshiftapps.com/dev-pipelines/ns/stevefavez/
+      title: Pipelines
+      icon: web
+    - url: https://console-openshift-consoleapps.summit23blues.6mbu.p1.openshiftapps.com/k8s/ns/stevefavez/deployments/stevefavez-poi-map-app
+      title: Deployment
+      icon: web
+    - url: https://devspacesapps.summit23blues.6mbu.p1.openshiftapps.com/#https://github.com/Summit23Janus2/stevefavez-frontend?che-editor=che-incubator/che-code/latest&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: http://stevefavez-poi-map-app-stevefavezapps.summit23blues.6mbu.p1.openshiftapps.com
+      title: Map
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user:default/stevefavez"
+  system: workshop-system-stevefavez
+  consumesApis:
+    - gateway-api-stevefavez
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: workshop-system-stevefavez
+  tags:
+    - backstage
+    - janus-idp
+    - openshift
+    - workshop
+    - rh-summit
+spec:
+  owner: "user:default/stevefavez"
